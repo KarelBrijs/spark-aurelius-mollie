@@ -59,7 +59,7 @@ class UpdateMolliePaymentMethod implements UpdatePaymentMethod
             $billable->taxPercentage() * 0.01
         );
 
-        return [ new AddGenericOrderItem($billable, $subtotal, __("Payment method updated")) ];
+        return [ new AddGenericOrderItem($billable, $subtotal, 1, __("Payment method updated")) ];
     }
 
     /**
@@ -73,6 +73,7 @@ class UpdateMolliePaymentMethod implements UpdatePaymentMethod
             new AddBalance(
                 $billable,
                 mollie_array_to_money(config('cashier.first_payment.amount')),
+                1,
                 __("Payment method updated")
             )
         ];
